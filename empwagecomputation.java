@@ -1,4 +1,5 @@
 public class empwagecomputation {
+
     public static final int IS_PART_TIME = 2;
     public static final int IS_FULL_TIME = 1;
     
@@ -6,15 +7,16 @@ public class empwagecomputation {
     private final int empRatePerHour;
     private final int numOfWorkingDays;
     private final int maxHoursPerMonth;
+    private int totalEmpWage;
     
-    public empwagecomputation(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+    public empwagecomputation (String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
 		this.company = company;
 		this.empRatePerHour = empRatePerHour;
 		this.numOfWorkingDays = numOfWorkingDays;
 		this.maxHoursPerMonth = maxHoursPerMonth;
 	}
     
-    private int computeWage() {
+    private void computeWage() {
     	
     	int empHrs = 0 ,totalEmpHrs=0, totalWorkingDays = 0;
     	while (totalEmpHrs <= maxHoursPerMonth && totalWorkingDays < numOfWorkingDays) {
@@ -33,15 +35,23 @@ public class empwagecomputation {
 			totalEmpHrs += empHrs;
 			System.out.println("Day#: " + totalWorkingDays + " Emp Hr : " +empHrs);
     	}
-    	return totalEmpHrs * empRatePerHour;
+    	totalEmpWage = totalEmpHrs * empRatePerHour;
+    	//return totalEmpHrs * empRatePerHour;
+    }
+    @Override
+    public String toString() {
+    	return "Total Emp Wage for company " +company+" is : " + totalEmpWage;
     }
 
 	public static void main(String args[]) {
-		empwagecomputation dMart = new empwagecomputation ("DMart",20,5,100);
-		empwagecomputation TATA = new empwagecomputation ("TATA",25,2,10);	
-		empwagecomputation Jio = new empwagecomputation ("Jio",20,4,10);
-		System.out.println("Total Employee Wage for Company " + dMart.company + " is : " + dMart.computeWage());
-		System.out.println("Total Employee Wage for Company " + TATA.company + " is : " + TATA.computeWage());
-		System.out.println("Total Employee Wage for Company " + Jio.company + " is : " + Jio.computeWage());
+		empwagecomputation dMart = new empwagecomputation("DMart", 20, 2 ,10);
+		empwagecomputation Jio = new empwagecomputation("Jio", 10, 2 ,10);
+		dMart.computeWage();
+		System.out.println(dMart);
+		Jio.computeWage();
+		System.out.println(Jio);
     	}
     }
+
+
+
