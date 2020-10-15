@@ -1,5 +1,3 @@
-//UC12_ArrsyList
-
 import java.util.*;
 
 interface IComputeEmpWage {
@@ -102,7 +100,6 @@ public class EmpWageBuilderArray implements IComputeEmpWage {
 			System.out.println("Day#: " + totalWorkingDays + " Emp Hr : " +empHrs+ 
 					" and Daily Wage of employee is " +DailyWage);
     	}
-    	//totalEmpWage = totalEmpHrs * empRatePerHour;
     	return totalEmpHrs * companyEmpWage.empRatePerHour;
     }
    	public static void main(String args[])
@@ -113,7 +110,10 @@ public class EmpWageBuilderArray implements IComputeEmpWage {
    		empWageBuilder.addCompanyEmpWage("Jio", 10, 5, 15);
 		empWageBuilder.addCompanyEmpWage("TATA", 200, 2 ,10);
 		empWageBuilder.computeEmpWage();
-		
+		System.out.println("Total wage for DMart: "+empWageBuilder.getTotalWage("DMart"));
+		System.out.println("Total wage for DMart: "+empWageBuilder.getTotalWage("Jio"));
+		System.out.println("Total wage for DMart: "+empWageBuilder.getTotalWage("TATA"));
     }
+   	
 }   	   	
-
+   	
